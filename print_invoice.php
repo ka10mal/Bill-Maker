@@ -12,7 +12,7 @@ $invoiceDate = date("d/M/Y, H:i:s", strtotime($invoiceValues['order_date']));
 $output = '';
 $output .= '<table width="100%" border="1" cellpadding="5" cellspacing="0">
 	<tr>
-	<td colspan="2" align="center" style="font-size:18px"><b>Invoice</b></td>
+	<td colspan="2" align="center" style="font-size:18px"><b>Radhika Jewellers</b></td>
 	</tr>
 	<tr>
 	<td colspan="2">
@@ -36,9 +36,9 @@ $output .= '<table width="100%" border="1" cellpadding="5" cellspacing="0">
 	<th align="left">Sr No.</th>
 	<th align="left">Item Code</th>
 	<th align="left">Item Name</th>
-	<th align="left">Quantity</th>
-	<th align="left">Price</th>
-	<th align="left">Actual Amt.</th> 
+	<th align="left">Weight</th>
+	<th align="left">Wastage</th>
+	<th align="left">Total value</th> 
 	</tr>';
 $count = 0;   
 foreach($invoiceItems as $invoiceItem){
@@ -83,15 +83,16 @@ $output .= '
 	</td>
 	</tr>
 	</table>';
+	echo $output;
 // create pdf of invoice	
-$invoiceFileName = 'AstroInvoice_'.$invoiceValues['order_id'].'.pdf';
-require_once 'dompdf/src/Autoloader.php';
-Dompdf\Autoloader::register();
-use Dompdf\Dompdf;
-$dompdf = new Dompdf();
-$dompdf->loadHtml(html_entity_decode($output));
-$dompdf->setPaper('A4', 'landscape');
-$dompdf->render();
-$dompdf->stream($invoiceFileName, array("Attachment" => false));
+//$invoiceFileName = 'Invoice-'.$invoiceValues['order_id'].'.pdf';
+// require_once 'dompdf/src/Autoloader.php';
+// Dompdf\Autoloader::register();
+// use Dompdf\Dompdf;
+// $dompdf = new Dompdf();
+// $dompdf->loadHtml(html_entity_decode($output));
+// $dompdf->setPaper('A4', 'landscape');
+// $dompdf->render();
+// $dompdf->stream($invoiceFileName, array("Attachment" => "0"));
 ?>   
    
